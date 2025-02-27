@@ -1,6 +1,8 @@
 import java.util.Scanner;
 // import java.util.Scanner;
 
+import javax.security.sasl.SaslException;
+
 public class app {
 
     public static void printName() { // function
@@ -227,7 +229,7 @@ public class app {
     }
 
     public static void piramid(int line) {
-        
+
         for (int i = 1; i <= line; i++) {
             // space
             for (int j = 1; j <= line - i; j++) {
@@ -235,20 +237,125 @@ public class app {
             }
             // star
             for (int j = 1; j <= i; j++) {
-                System.out.print(i+ " ");
+                System.out.print(i + " ");
             }
-            
+
             System.out.println();
-            
+
+        }
+    }
+
+    public static void array() {
+        System.out.println("Enter the Array size");
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+
+        // take array input
+        System.out.println("Enter the Array Element");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        // print array element
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        // Sum of Array
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+        }
+
+        System.out.print("Sum of the array is " + sum);
+    }
+
+    public static void largestElement() {
+        System.out.println("Enter the Array size");
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+
+        // take array input
+        System.out.println("Enter the Array Element");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        int largest = 0;
+        for (int i = 1; i < n; i++) {
+            if (arr[i] > largest) {
+                largest = arr[i];
+            }
+        }
+        System.out.println("largest element is " + largest);
+    }
+
+    public static void linearSearch(){
+        System.out.println("Enter the Array size");
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+
+        // take array input
+        System.out.println("Enter the Array Element");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        System.out.println("Enter key");
+        int key = scn.nextInt();
+        int index = felement(arr, key);
+
+        if(index!=-1){
+            System.out.println("Fount element at index "+ index);
+        }else{
+            System.out.println("element not exist");
+        }
+
+    }
+
+    public static int felement(int[] arr, int key){
+        for(int i =0;i< arr.length;i++){
+            if(arr[i]==key){
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
+    public static void binarySearch(){
+        System.out.println("Enter the Array size");
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+
+        // take array input
+        System.out.println("Enter the Array Element");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        System.out.println("Enter key");
+        int key = scn.nextInt();
+        int start = 0;
+        int end = arr.length-1;
+        System.out.println(end +""+ start);
+
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(arr[mid]==key){
+                System.out.println("Found at index "+ mid);
+                break;
+            }else if(arr[mid]<key){
+                start = mid+1;
+            }else if(arr[mid]>key){
+                end = mid-1;
+            }
         }
     }
 
     public static void main(String[] args) {
 
-        // printButterflyPattern();
-        solidRhombus();
-        hollowRhomnus();
-        piramid(4);
-        // System.out.println(isPrime(5));
+        binarySearch();
     }
 }
