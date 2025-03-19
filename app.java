@@ -291,7 +291,7 @@ public class app {
         System.out.println("largest element is " + largest);
     }
 
-    public static void linearSearch(){
+    public static void linearSearch() {
         System.out.println("Enter the Array size");
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
@@ -306,17 +306,17 @@ public class app {
         int key = scn.nextInt();
         int index = felement(arr, key);
 
-        if(index!=-1){
-            System.out.println("Fount element at index "+ index);
-        }else{
+        if (index != -1) {
+            System.out.println("Fount element at index " + index);
+        } else {
             System.out.println("element not exist");
         }
 
     }
 
-    public static int felement(int[] arr, int key){
-        for(int i =0;i< arr.length;i++){
-            if(arr[i]==key){
+    public static int felement(int[] arr, int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
                 return i;
             }
         }
@@ -324,7 +324,7 @@ public class app {
 
     }
 
-    public static void binarySearch(){
+    public static void binarySearch() {
         System.out.println("Enter the Array size");
         Scanner scn = new Scanner(System.in);
         int n = scn.nextInt();
@@ -338,24 +338,33 @@ public class app {
         System.out.println("Enter key");
         int key = scn.nextInt();
         int start = 0;
-        int end = arr.length-1;
-        System.out.println(end +""+ start);
+        int end = arr.length - 1;
 
-        while(start<=end){
-            int mid = (start+end)/2;
-            if(arr[mid]==key){
-                System.out.println("Found at index "+ mid);
+        while (start <= end) {
+            int mid = (start + end) / 2;
+            if (arr[mid] == key) {
+                System.out.println("Found at index " + mid);
                 break;
-            }else if(arr[mid]<key){
-                start = mid+1;
-            }else if(arr[mid]>key){
-                end = mid-1;
+            } else if (arr[mid] < key) {
+                start = mid + 1;
+            } else if (arr[mid] > key) {
+                end = mid - 1;
             }
         }
     }
 
+    public static void ternaryOperator() {
+
+        int a = 10;
+        int b = 22;
+        int c = 4;
+        int result = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+        System.out.println(result);
+
+    }
+
     public static void main(String[] args) {
 
-        binarySearch();
+        ternaryOperator();
     }
 }
