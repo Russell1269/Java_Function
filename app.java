@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.*;
 // import java.util.Scanner;
 
 import javax.security.sasl.SaslException;
@@ -42,11 +43,95 @@ public class app {
         return result;
     }
 
+    public static void fibonacciSeries(int n) {
+        int firstTerm = 0;
+        int secondTerm = 1;
+        for (int i = 1; i <= n; i++) {
+            System.out.print(firstTerm + " ");
+            int nextTerm = firstTerm + secondTerm;
+            firstTerm = secondTerm;
+            secondTerm = nextTerm;
+        }
+    }
+
+    public static void leapYear(int n) {
+        if (n % 4 == 0) {
+            System.out.println("leap Year");
+        } else {
+            System.out.println("Not Leap Year");
+        }
+    }
+
+    public static void palindrome() {
+        Scanner scn = new Scanner(System.in);
+        System.out.println("Enter Anything to check palindrome or not :");
+        String inp = scn.nextLine();
+
+        inp = inp.replaceAll("\\s+", "");
+
+        char[] arr = inp.toCharArray();
+        char array[] = new char[arr.length];
+
+        for (int i = arr.length - 1, j = 0; i >= 0; i--, j++) {
+            array[j] = arr[i];
+
+        }
+        String reversed = new String(array);
+        System.out.println(reversed.toLowerCase());
+
+        String reversed1 = new StringBuilder().append(inp).reverse().toString().toLowerCase();
+
+        if (inp.equals(reversed)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("NOt Palindrome");
+        }
+
+    }
+
+    public static void calculator() {
+        Scanner scn = new Scanner(System.in);
+
+        System.out.println("Enter Operator : +, -, *, / :");
+        char key = scn.next().charAt(0);
+
+        System.out.println("Enter first num: ");
+        float a = scn.nextFloat();
+
+        System.out.println("Enter Second num: ");
+        float b = scn.nextFloat();
+
+        switch (key) {
+            case '+':
+                System.out.println("sum = " + (a + b));
+                break;
+            case '-':
+                System.out.println("Substaction = " + (a - b));
+                break;
+            case '*':
+                System.out.println("Multiplication = " + a * b);
+                break;
+            case '/':
+                System.out.println("Divition = " +  (a / b));
+                break;
+            default:
+                System.out.println("Error");
+                break;
+        }
+
+    }
+
+    public static void multiplicationTable(int n) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(n + " " + "*" + " " + i + " " + "=" + " " + n * i);
+        }
+    }
+
     public static boolean isPrime(int n) {
         if (n <= 1) {
             return false;
         }
-        for (int i = 2; i <= n - 1; i++) {
+        for (int i = 2; i <= Math.sqrt(n); i++) {
             if ((n % i == 0)) {
                 return false;
 
@@ -363,8 +448,20 @@ public class app {
 
     }
 
+    public static int ternaryOperator(int a, int b, int c, String x) {
+        if (x == "Max") {
+            int result = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+            return result;
+
+        } else if (x == "Min") {
+            int result = (a < b) ? (a < c ? a : c) : (b < c ? b : c);
+            return result;
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
 
-        ternaryOperator();
+        calculator();
     }
 }
