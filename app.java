@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.reflect.Array;
 import java.util.*;
 // import java.util.Scanner;
 
@@ -112,7 +113,7 @@ public class app {
                 System.out.println("Multiplication = " + a * b);
                 break;
             case '/':
-                System.out.println("Divition = " +  (a / b));
+                System.out.println("Divition = " + (a / b));
                 break;
             default:
                 System.out.println("Error");
@@ -460,8 +461,124 @@ public class app {
         return 0;
     }
 
+    public static int[] arrayInputFromUser() { // When you want to take array input using function and return it Use
+                                               // "int[]" insted only int
+        System.out.println("Enter the Array size");
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+
+        // take array input
+        System.out.println("Enter the Array Element");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        return arr;
+    }
+
+    // Sorting
+    public static void bubleSort() {
+        int[] arr = arrayInputFromUser();
+
+        for (int turn = 0; turn <= arr.length - 2; turn++) {
+            for (int chk = 0; chk <= arr.length - 2 - turn; chk++) {
+                if (arr[chk] > arr[chk + 1]) {
+                    int temp = arr[chk];
+                    arr[chk] = arr[chk + 1];
+                    arr[chk + 1] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+
+    }
+
+    public static void selectionSort() {
+        int[] arr = arrayInputFromUser();
+
+        for (int i = 0; i <= arr.length - 2; i++) {
+            int minPos = i;
+            for (int j = i + 1; j <= arr.length - 1; j++) {
+                if (arr[minPos] > arr[j]) {
+                    minPos = j;
+                }
+            }
+            int temp = arr[minPos];
+            arr[minPos] = arr[i];
+            arr[i] = temp;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+    }
+
+    public static void insertionSort() {
+        int[] arr = arrayInputFromUser();
+
+        for (int i = 1; i < arr.length; i++) {
+            int current = arr[i];
+            int prev = i - 1;
+
+            while (prev >= 0 && arr[prev] > current) {
+                arr[prev + 1] = arr[prev];
+                prev--;
+            }
+            arr[prev + 1] = current;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+
+    }
+
+    public static void countingSort() {
+        int[] arr = arrayInputFromUser();
+
+        int largest = Integer.MIN_VALUE;
+
+        // largest value
+        for (int i = 0; i < arr.length; i++) {
+            largest = Math.max(largest, arr[i]);
+        }
+
+        int count[] = new int[largest + 1];
+        for (int i = 0; i < arr.length; i++) {
+            count[arr[i]]++;
+        }
+
+        int j = 0;
+        for (int i = 0; i < count.length; i++) {
+            while (count[i] > 0) {
+                arr[j] = i;
+                j++;
+                count[i]--;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+
+    }
+
+    public static void librarySort() {
+        int[] arr = arrayInputFromUser();
+
+        Arrays.sort(arr); //Library Sorting Method;
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+    }
+
     public static void main(String[] args) {
 
-        calculator();
+        countingSort();
     }
 }
