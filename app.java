@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.lang.reflect.Array;
+import java.lang.*;
 import java.util.*;
+import java.security.SecureRandom;
 // import java.util.Scanner;
 
 import javax.security.sasl.SaslException;
@@ -570,15 +572,46 @@ public class app {
     public static void librarySort() {
         int[] arr = arrayInputFromUser();
 
-        Arrays.sort(arr); //Library Sorting Method;
+        Arrays.sort(arr); // Library Sorting Method;
 
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + ", ");
         }
     }
 
-    public static void main(String[] args) {
+    // java class Library (JCL)
+    public static void jcl() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Hello");
+        list.add("World");
+        System.out.println(list);
+    }
 
-        countingSort();
+    // Generating ramdom character
+    public static void randomCharacter() {
+
+        char randomChar = (char) ('A' + Math.random() * ('R' - 'A' + 1));
+        System.out.println("Random lowercase character: " + randomChar);
+    }
+
+    // GEnerating ranmdom Digit
+    public static void randomDigit() {
+        int num = (int) Math.ceil(Math.random() * 6);
+        System.out.println(num);
+    }
+
+    // secure random character
+    public static void secureRandomCharacter() {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        SecureRandom rand = new SecureRandom();
+        char randomChar = chars.charAt(rand.nextInt(chars.length()));
+        System.out.print(randomChar);
+    }
+
+    public static void main(String[] args) {
+        for (int i = 0; i <= 7; i++) {
+
+            secureRandomCharacter();
+        }
     }
 }
